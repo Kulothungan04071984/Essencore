@@ -71,7 +71,6 @@ namespace Essencore
                     string productNo = string.Empty;
                     rtbInstruction.Text = "Print Start";
                     rtbInstruction.BackColor = Color.LightGoldenrodYellow;
-
                     DataBindings();
                     printLabelBarcode(txtCustomerSerialNo.Text.ToString(), bcode.ToString());
 
