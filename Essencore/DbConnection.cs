@@ -59,7 +59,7 @@ namespace Essencore
             {
                 objType = new labeltype();
                 objType.labelmasterid = Convert.ToInt32(dr["labelmasterid"]);
-                objType.labelname = Convert.ToString(dr["labeltype"]);
+                objType.labelname = Convert.ToString(dr["labeltype"].ToString());
                 lstType.Add(objType);
             }
             return lstType;
