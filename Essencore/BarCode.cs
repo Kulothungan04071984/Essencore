@@ -76,6 +76,7 @@ namespace Essencore
 
                     lblProductNo.Text = bcode.ToString();
                     rtbInstruction.BackColor = Color.Empty;
+                    txtCustomerSerialNo.Text=bcode.ToString();
                 }
                 else if (bcode == "Duplicate")
                 {
@@ -198,7 +199,7 @@ namespace Essencore
                 btFormat.Close(BtSaveOptions.btDoNotSaveChanges);
 
                 rtbInstruction.Text = "Print Successfully Completed";
-
+                
 
 
             }
