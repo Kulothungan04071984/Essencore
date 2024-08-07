@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <Reference Include="Interop.BarTender">
-      <HintPath>..\..\..\..\..\..\Program Files\Seagull\BarTender 2022\Interop.BarTender.dll</HintPath>
+      <HintPath>C:\Program Files\Seagull\BarTender 2022\Interop.BarTender.dll</HintPath>
     </Reference>
   </ItemGroup>
 
