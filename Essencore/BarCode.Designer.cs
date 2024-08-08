@@ -30,7 +30,6 @@
         {
             lblBarcode = new Label();
             label1 = new Label();
-            txtSyrmaPartNo = new TextBox();
             picboxEssencore = new PictureBox();
             txtPCBSerialNo = new TextBox();
             label2 = new Label();
@@ -50,7 +49,6 @@
             label9 = new Label();
             btnClear = new Button();
             cmbProductType = new ComboBox();
-            label10 = new Label();
             lblProductNo = new Label();
             ((System.ComponentModel.ISupportInitialize)picboxEssencore).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvBarcodeDetails).BeginInit();
@@ -76,13 +74,6 @@
             label1.Size = new Size(145, 17);
             label1.TabIndex = 1;
             label1.Text = "Syrma SGS Part No :";
-            // 
-            // txtSyrmaPartNo
-            // 
-            txtSyrmaPartNo.Location = new Point(18, 114);
-            txtSyrmaPartNo.Name = "txtSyrmaPartNo";
-            txtSyrmaPartNo.Size = new Size(365, 23);
-            txtSyrmaPartNo.TabIndex = 2;
             // 
             // picboxEssencore
             // 
@@ -241,21 +232,11 @@
             // cmbProductType
             // 
             cmbProductType.FormattingEnabled = true;
-            cmbProductType.Location = new Point(145, 49);
+            cmbProductType.Location = new Point(23, 112);
             cmbProductType.Name = "cmbProductType";
-            cmbProductType.Size = new Size(238, 23);
+            cmbProductType.Size = new Size(360, 23);
             cmbProductType.TabIndex = 21;
             cmbProductType.SelectedIndexChanged += cmbProductType_SelectedIndexChanged;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Showcard Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(22, 55);
-            label10.Name = "label10";
-            label10.Size = new Size(117, 17);
-            label10.TabIndex = 22;
-            label10.Text = "Product Type :";
             // 
             // lblProductNo
             // 
@@ -273,7 +254,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1147, 645);
             Controls.Add(lblProductNo);
-            Controls.Add(label10);
             Controls.Add(cmbProductType);
             Controls.Add(btnClear);
             Controls.Add(label9);
@@ -292,7 +272,6 @@
             Controls.Add(txtPCBSerialNo);
             Controls.Add(label2);
             Controls.Add(picboxEssencore);
-            Controls.Add(txtSyrmaPartNo);
             Controls.Add(label1);
             Controls.Add(lblBarcode);
             Name = "frmBarcode";
@@ -308,7 +287,6 @@
 
         private Label lblBarcode;
         private Label label1;
-        private TextBox txtSyrmaPartNo;
         private PictureBox picboxEssencore;
         private TextBox txtPCBSerialNo;
         private Label label2;
@@ -328,7 +306,6 @@
         private Label label9;
         private Button btnClear;
         private ComboBox cmbProductType;
-        private Label label10;
         private Label lblProductNo;
     }
 }

@@ -141,7 +141,7 @@ namespace Essencore
             txtCustomerSerialNo.Text = string.Empty; 
             txtPCBSerialNo.Focus();
             txtPCBSerialNo.Text = string.Empty;
-            txtSyrmaPartNo.Text = string.Empty;
+            //txtSyrmaPartNo.Text = string.Empty;
             txtCustomerPartNo.Text=string.Empty;
             txtWorkorderNo.Text = string.Empty;
             txtDescription.Text=string.Empty;
@@ -259,7 +259,7 @@ namespace Essencore
                 dgvBarcodeDetails.Columns["ProductNo"].Width = 250;
                 dgvBarcodeDetails.Columns["CustomerSerialNo"].Width = 250;
                 dgvBarcodeDetails.Columns["PCBSerialNo"].Width = 250;
-                dgvBarcodeDetails.Columns["SyrmaSGSPartno"].Visible = false;
+                //dgvBarcodeDetails.Columns["SyrmaSGSPartno"].Visible = false;
                 dgvBarcodeDetails.Columns["WorkOrderNo"].Visible = false;
                 dgvBarcodeDetails.Columns["CustomerPartNo"].Visible = false;
                 dgvBarcodeDetails.Columns["Bar_Description"].Visible = false;
@@ -267,6 +267,7 @@ namespace Essencore
 
 
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
@@ -276,7 +277,7 @@ namespace Essencore
         private void frmBarcode_Load(object sender, EventArgs e)
         {
             txtPCBSerialNo.Focus();
-           // cmbProductType.Items.Insert(0, "Select ProductType");
+            cmbProductType.Items.Insert(0, "Select ProductType");
            
             var lstLabelDetails = getConn.GetLabels();
             cmbProductType.DataSource = lstLabelDetails;
@@ -294,7 +295,6 @@ namespace Essencore
                 {
                     int labelid = Convert.ToInt32(cmbProductType.SelectedValue);
                     var productdetails = getConn.GetProductDetails(labelid);
-                    txtSyrmaPartNo.Text = productdetails.SyrmaSGSPartno;
                     txtWorkorderNo.Text = productdetails.WorkOrderNo;
                     txtCustomerPartNo.Text= productdetails.CustomerPartNo;
                     txtDescription.Text = productdetails.Bar_Description;
@@ -303,8 +303,7 @@ namespace Essencore
                 }
                 else
                 {
-                    txtSyrmaPartNo.Text = string.Empty;
-                   
+                    //txtSyrmaPartNo.Text = string.Empty;
                 }
                 if (isBlinking)
                     blinkTimer.Stop();
