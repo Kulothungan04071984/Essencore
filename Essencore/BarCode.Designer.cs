@@ -256,9 +256,10 @@
             // 
             label10.AllowDrop = true;
             label10.AutoSize = true;
-            label10.Location = new Point(63, 22);
+            label10.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(70, 22);
             label10.Name = "label10";
-            label10.Size = new Size(87, 15);
+            label10.Size = new Size(100, 15);
             label10.TabIndex = 25;
             label10.Text = "08 August 2024";
             label10.Click += label10_Click;
@@ -269,20 +270,20 @@
             label11.Font = new Font("Showcard Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label11.Location = new Point(20, 20);
             label11.Name = "label11";
-            label11.Size = new Size(42, 17);
+            label11.Size = new Size(49, 17);
             label11.TabIndex = 26;
-            label11.Text = "Date";
+            label11.Text = "Date :";
             // 
             // lblWeekNumber
             // 
             lblWeekNumber.AutoSize = true;
+            lblWeekNumber.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblWeekNumber.Location = new Point(235, 21);
             lblWeekNumber.Name = "lblWeekNumber";
-            lblWeekNumber.Size = new Size(0, 15);
+            lblWeekNumber.Size = new Size(50, 15);
             lblWeekNumber.TabIndex = 27;
-            lblWeekNumber.Text = DateTime.Now.ToLongTimeString();
+            lblWeekNumber.Text = "12:53:18";
             lblWeekNumber.Click += lblWeekNumber_Click;
-           
             // 
             // frmBarcode
             // 

@@ -60,7 +60,7 @@ namespace Essencore
 
             // Set the week number to the label
             lblWeekNumber.Text = $"Week Number: {weekNumber}";
-
+            lblWeekNumber.Font= new Font("Showcard Gothic", 12f);
         }
 
 
