@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 using BarTender;
 //using Microsoft.Office.Interop.BarTender;
 using System.Xml.Linq;
+using System.Globalization;
 //using static OfficeOpenXml.ExcelErrorValue;
 //using ZXing;
 //using ZXing.QrCode;
@@ -38,9 +39,30 @@ namespace Essencore
         public frmBarcode()
         {
             InitializeComponent();
+            DisplayWeekNumber();
+
             this.KeyPreview = true;
 
         }
+
+
+        private void DisplayWeekNumber()
+        {
+            // Get the current date
+            DateTime currentDate = DateTime.Now;
+
+            // Get the week number of the year
+            CultureInfo culture = CultureInfo.CurrentCulture;
+            int weekNumber = culture.Calendar.GetWeekOfYear(
+                currentDate,
+                CalendarWeekRule.FirstFourDayWeek,
+                DayOfWeek.Monday);
+
+            // Set the week number to the label
+            lblWeekNumber.Text = $"Week Number: {weekNumber}";
+
+        }
+
 
         private void lblBarcode_Click(object sender, EventArgs e)
         {
@@ -76,7 +98,7 @@ namespace Essencore
 
                     lblProductNo.Text = bcode.ToString();
                     rtbInstruction.BackColor = Color.Empty;
-                    txtCustomerSerialNo.Text=bcode.ToString();
+                    txtCustomerSerialNo.Text = bcode.ToString();
                 }
                 else if (bcode == "Duplicate")
                 {
@@ -98,7 +120,7 @@ namespace Essencore
                     rtbInstruction.BackColor = Color.Gray;
                 }
             }
-            else if(cmbProductType.SelectedIndex == 0)
+            else if (cmbProductType.SelectedIndex == 0)
             {
                 MessageBox.Show("Please Select the Product Type");
             }
@@ -138,17 +160,17 @@ namespace Essencore
 
         private void btnClear_Click_1(object sender, EventArgs e)
         {
-            txtCustomerSerialNo.Text = string.Empty; 
+            txtCustomerSerialNo.Text = string.Empty;
             txtPCBSerialNo.Focus();
             txtPCBSerialNo.Text = string.Empty;
             //txtSyrmaPartNo.Text = string.Empty;
-            txtCustomerPartNo.Text=string.Empty;
+            txtCustomerPartNo.Text = string.Empty;
             txtWorkorderNo.Text = string.Empty;
-            txtDescription.Text=string.Empty;
+            txtDescription.Text = string.Empty;
             cmbProductType.SelectedIndex = 0;
             rtbInstruction.Text = string.Empty;
             rtbInstruction.BackColor = Color.Empty;
-            txtPCBSerialNo.BackColor=Color.Empty;
+            txtPCBSerialNo.BackColor = Color.Empty;
         }
 
 
@@ -199,7 +221,7 @@ namespace Essencore
                 btFormat.Close(BtSaveOptions.btDoNotSaveChanges);
 
                 rtbInstruction.Text = "Print Successfully Completed";
-                
+
 
 
             }
@@ -278,7 +300,7 @@ namespace Essencore
         {
             txtPCBSerialNo.Focus();
             cmbProductType.Items.Insert(0, "Select ProductType");
-           
+
             var lstLabelDetails = getConn.GetLabels();
             cmbProductType.DataSource = lstLabelDetails;
             cmbProductType.DisplayMember = "labelname";
@@ -296,7 +318,7 @@ namespace Essencore
                     int labelid = Convert.ToInt32(cmbProductType.SelectedValue);
                     var productdetails = getConn.GetProductDetails(labelid);
                     txtWorkorderNo.Text = productdetails.WorkOrderNo;
-                    txtCustomerPartNo.Text= productdetails.CustomerPartNo;
+                    txtCustomerPartNo.Text = productdetails.CustomerPartNo;
                     txtDescription.Text = productdetails.Bar_Description;
                     lblProductNo.Text = productdetails.ProductNo;
 
@@ -308,8 +330,23 @@ namespace Essencore
                 if (isBlinking)
                     blinkTimer.Stop();
             }
-            catch(Exception ex)
-            {  MessageBox.Show(ex.Message.ToString());}
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message.ToString()); }
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblWeekNumber_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

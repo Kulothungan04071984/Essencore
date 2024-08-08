@@ -30,7 +30,6 @@
         {
             lblBarcode = new Label();
             label1 = new Label();
-            picboxEssencore = new PictureBox();
             txtPCBSerialNo = new TextBox();
             label2 = new Label();
             txtWorkorderNo = new TextBox();
@@ -50,8 +49,12 @@
             btnClear = new Button();
             cmbProductType = new ComboBox();
             lblProductNo = new Label();
-            ((System.ComponentModel.ISupportInitialize)picboxEssencore).BeginInit();
+            pictureBox1 = new PictureBox();
+            label10 = new Label();
+            label11 = new Label();
+            lblWeekNumber = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvBarcodeDetails).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblBarcode
@@ -74,14 +77,6 @@
             label1.Size = new Size(145, 17);
             label1.TabIndex = 1;
             label1.Text = "Syrma SGS Part No :";
-            // 
-            // picboxEssencore
-            // 
-            picboxEssencore.Location = new Point(1028, 22);
-            picboxEssencore.Name = "picboxEssencore";
-            picboxEssencore.Size = new Size(89, 50);
-            picboxEssencore.TabIndex = 4;
-            picboxEssencore.TabStop = false;
             // 
             // txtPCBSerialNo
             // 
@@ -248,11 +243,56 @@
             lblProductNo.TabIndex = 23;
             lblProductNo.Visible = false;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.SyrmaSgs;
+            pictureBox1.Location = new Point(960, 37);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(152, 50);
+            pictureBox1.TabIndex = 24;
+            pictureBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            label10.AllowDrop = true;
+            label10.AutoSize = true;
+            label10.Location = new Point(63, 22);
+            label10.Name = "label10";
+            label10.Size = new Size(87, 15);
+            label10.TabIndex = 25;
+            label10.Text = "08 August 2024";
+            label10.Click += label10_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Showcard Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(20, 20);
+            label11.Name = "label11";
+            label11.Size = new Size(42, 17);
+            label11.TabIndex = 26;
+            label11.Text = "Date";
+            // 
+            // lblWeekNumber
+            // 
+            lblWeekNumber.AutoSize = true;
+            lblWeekNumber.Location = new Point(235, 21);
+            lblWeekNumber.Name = "lblWeekNumber";
+            lblWeekNumber.Size = new Size(0, 15);
+            lblWeekNumber.TabIndex = 27;
+            lblWeekNumber.Text = DateTime.Now.ToLongTimeString();
+            lblWeekNumber.Click += lblWeekNumber_Click;
+           
+            // 
             // frmBarcode
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1147, 645);
+            Controls.Add(lblWeekNumber);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(pictureBox1);
             Controls.Add(lblProductNo);
             Controls.Add(cmbProductType);
             Controls.Add(btnClear);
@@ -271,14 +311,13 @@
             Controls.Add(label3);
             Controls.Add(txtPCBSerialNo);
             Controls.Add(label2);
-            Controls.Add(picboxEssencore);
             Controls.Add(label1);
             Controls.Add(lblBarcode);
             Name = "frmBarcode";
             Text = "BarCode";
             Load += frmBarcode_Load;
-            ((System.ComponentModel.ISupportInitialize)picboxEssencore).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvBarcodeDetails).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -287,7 +326,6 @@
 
         private Label lblBarcode;
         private Label label1;
-        private PictureBox picboxEssencore;
         private TextBox txtPCBSerialNo;
         private Label label2;
         private TextBox txtWorkorderNo;
@@ -307,5 +345,9 @@
         private Button btnClear;
         private ComboBox cmbProductType;
         private Label lblProductNo;
+        private PictureBox pictureBox1;
+        private Label label10;
+        private Label label11;
+        private Label lblWeekNumber;
     }
 }
