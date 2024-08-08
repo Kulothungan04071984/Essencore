@@ -91,7 +91,8 @@ namespace Essencore
                 if (bcode != "Duplicate" && bcode != "NotFound")
                 {
                     string productNo = string.Empty;
-                    rtbInstruction.Text = "Print Start";
+                    rtbInstruction.Text = "Print Started";
+                    rtbInstruction.Font = new Font("Showcard Gothic", 12f);
                     rtbInstruction.BackColor = Color.LightGoldenrodYellow;
                     DataBindings();
                     printLabelBarcode(txtCustomerSerialNo.Text.ToString(), bcode.ToString());
@@ -113,11 +114,13 @@ namespace Essencore
                     blinkTimer.Start();
                     rtbInstruction.Text = "Duplicate";
                     rtbInstruction.BackColor = Color.OrangeRed;
+                    rtbInstruction.Font = new Font("Showcard Gothic", 12f);
                 }
                 else if (bcode == "NotFound")
                 {
                     rtbInstruction.Text = "PCB Serial No Not Fount";
                     rtbInstruction.BackColor = Color.Gray;
+                    rtbInstruction.Font = new Font("Showcard Gothic", 12f);
                 }
             }
             else if (cmbProductType.SelectedIndex == 0)
@@ -221,6 +224,8 @@ namespace Essencore
                 btFormat.Close(BtSaveOptions.btDoNotSaveChanges);
 
                 rtbInstruction.Text = "Print Successfully Completed";
+                rtbInstruction.Font = new Font("Showcard Gothic", 12f);
+                rtbInstruction.BackColor = Color.Gray;
 
 
 
@@ -281,7 +286,7 @@ namespace Essencore
                 dgvBarcodeDetails.Columns["ProductNo"].Width = 250;
                 dgvBarcodeDetails.Columns["CustomerSerialNo"].Width = 250;
                 dgvBarcodeDetails.Columns["PCBSerialNo"].Width = 250;
-                //dgvBarcodeDetails.Columns["SyrmaSGSPartno"].Visible = false;
+                dgvBarcodeDetails.Columns["SyrmaSGSPartno"].Visible = false;
                 dgvBarcodeDetails.Columns["WorkOrderNo"].Visible = false;
                 dgvBarcodeDetails.Columns["CustomerPartNo"].Visible = false;
                 dgvBarcodeDetails.Columns["Bar_Description"].Visible = false;
@@ -317,11 +322,23 @@ namespace Essencore
                 {
                     int labelid = Convert.ToInt32(cmbProductType.SelectedValue);
                     var productdetails = getConn.GetProductDetails(labelid);
-                    txtWorkorderNo.Text = productdetails.WorkOrderNo;
-                    txtCustomerPartNo.Text = productdetails.CustomerPartNo;
-                    txtDescription.Text = productdetails.Bar_Description;
-                    lblProductNo.Text = productdetails.ProductNo;
-
+                    if (productdetails.WorkOrderNo != null)
+                    {
+                        txtWorkorderNo.Text = productdetails.WorkOrderNo;
+                        txtCustomerPartNo.Text = productdetails.CustomerPartNo;
+                        txtDescription.Text = productdetails.Bar_Description;
+                        lblProductNo.Text = productdetails.ProductNo;
+                        DataBindings();
+                        txtPCBSerialNo.Focus();
+                    }
+                    else
+                    {
+                        dgvBarcodeDetails.Columns.Clear();
+                        txtWorkorderNo.Text = string.Empty;
+                        txtCustomerPartNo.Text = string.Empty;
+                        txtDescription.Text = string.Empty;
+                        lblProductNo.Text = string.Empty;
+                    }
                 }
                 else
                 {
