@@ -90,12 +90,12 @@ namespace Essencore
 
                 if (bcode != "Duplicate" && bcode != "NotFound")
                 {
-                    string productNo = string.Empty;
+                    //string productNo = string.Empty;
                     rtbInstruction.Text = "Print Started";
                     rtbInstruction.Font = new Font("Showcard Gothic", 12f);
                     rtbInstruction.BackColor = Color.LightGoldenrodYellow;
                     DataBindings();
-                    printLabelBarcode(txtCustomerSerialNo.Text.ToString(), bcode.ToString());
+                    printLabelBarcode(lblProductNo.Text.ToString(), bcode.ToString());
 
                     lblProductNo.Text = bcode.ToString();
                     rtbInstruction.BackColor = Color.Empty;
@@ -180,14 +180,23 @@ namespace Essencore
         public void printLabelBarcode(string productno, string cus_serialno)
         {
             string labelFormatPath = @"C:\kulo\kulo\BarCode.btw";
+            var product_no=string.IsNullOrEmpty(productno) ? string.Empty : productno;
+            var cus_no = string.IsNullOrEmpty(cus_serialno) ? string.Empty : cus_serialno;
+            if (product_no != string.Empty && cus_no != string.Empty)
+            {
 
-            var externalValues = new Dictionary<string, string>
+                var externalValues = new Dictionary<string, string>
         {
             { "SerialNumber", cus_serialno },
             { "ProductNumber", productno }
         };
 
-            PrintLabel(labelFormatPath, externalValues);
+                PrintLabel(labelFormatPath, externalValues);
+            }
+            else
+            {
+                MessageBox.Show("Database not connected. Please check with admin");
+            }
 
         }
 
@@ -303,14 +312,21 @@ namespace Essencore
 
         private void frmBarcode_Load(object sender, EventArgs e)
         {
-            txtPCBSerialNo.Focus();
-            cmbProductType.Items.Insert(0, "Select ProductType");
+            try
+            {
+                txtPCBSerialNo.Focus();
+                cmbProductType.Items.Insert(0, "Select ProductType");
 
-            var lstLabelDetails = getConn.GetLabels();
-            cmbProductType.DataSource = lstLabelDetails;
-            cmbProductType.DisplayMember = "labelname";
-            cmbProductType.ValueMember = "labelmasterid";
-            cmbProductType.SelectedIndex = 0;
+                var lstLabelDetails = getConn.GetLabels();
+                cmbProductType.DataSource = lstLabelDetails;
+                cmbProductType.DisplayMember = "labelname";
+                cmbProductType.ValueMember = "labelmasterid";
+                cmbProductType.SelectedIndex = 0;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Database not connected.");
+            }
 
         }
 

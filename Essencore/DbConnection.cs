@@ -60,7 +60,7 @@ namespace Essencore
             catch(Exception ex)
             {
                 return list;
-                MessageBox.Show("Error :" + ex.Message.ToString());
+                MessageBox.Show("Error", "Database not connected");
             }
         }
 
