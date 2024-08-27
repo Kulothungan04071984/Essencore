@@ -16,6 +16,7 @@ using BarTender;
 //using Microsoft.Office.Interop.BarTender;
 using System.Xml.Linq;
 using System.Globalization;
+using ZXing;
 //using static OfficeOpenXml.ExcelErrorValue;
 //using ZXing;
 //using ZXing.QrCode;
@@ -205,6 +206,7 @@ namespace Essencore
 
             BarTender.Application btApp = null;
             BarTender.Format btFormat = null;
+            Messages btmessages = null;
 
             try
             {
@@ -227,14 +229,29 @@ namespace Essencore
 
 
                 // Print the document
-                btFormat.PrintOut(false, false);
-
+                //btFormat.PrintOut(false, false);
+                BtPrintResult result = btFormat.Print(PrintJobName: $"'{values}'", WaitForSpoolJobToComplete: true, 
+                                                      TimeoutMs: 60000,Messages: out btmessages);
+              
                 // Close the document
                 btFormat.Close(BtSaveOptions.btDoNotSaveChanges);
 
-                rtbInstruction.Text = "Print Successfully Completed";
-                rtbInstruction.Font = new Font("Showcard Gothic", 12f);
-                rtbInstruction.BackColor = Color.Gray;
+                if (result==BtPrintResult.btSuccess)
+                {
+                    rtbInstruction.Text = "Print Successfully Completed";
+                    rtbInstruction.Font = new Font("Showcard Gothic", 12f);
+                    rtbInstruction.BackColor = Color.Gray;
+
+                }
+                else
+                {
+                    rtbInstruction.Text = $"'{result}'";
+                    rtbInstruction.Font = new Font("Showcard Gothic", 12f);
+                    rtbInstruction.BackColor = Color.Gray;
+
+                }
+
+
 
 
 
