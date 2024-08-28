@@ -98,7 +98,7 @@ namespace Essencore
                     DataBindings();
                     printLabelBarcode(lblProductNo.Text.ToString(), bcode.ToString());
 
-                    lblProductNo.Text = bcode.ToString();
+                    //lblProductNo.Text = bcode.ToString();
                     rtbInstruction.BackColor = Color.Empty;
                     txtCustomerSerialNo.Text = bcode.ToString();
                 }
@@ -193,6 +193,8 @@ namespace Essencore
         };
 
                 PrintLabel(labelFormatPath, externalValues);
+                txtPCBSerialNo.Text = string.Empty;
+                txtPCBSerialNo.Focus();
             }
             else
             {
