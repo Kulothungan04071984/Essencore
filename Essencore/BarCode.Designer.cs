@@ -51,8 +51,8 @@
             lblProductNo = new Label();
             pictureBox1 = new PictureBox();
             label10 = new Label();
-            label11 = new Label();
             lblWeekNumber = new Label();
+            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvBarcodeDetails).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -61,11 +61,11 @@
             // 
             lblBarcode.AutoSize = true;
             lblBarcode.Font = new Font("Showcard Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblBarcode.Location = new Point(415, 9);
+            lblBarcode.Location = new Point(487, 6);
             lblBarcode.Name = "lblBarcode";
-            lblBarcode.Size = new Size(270, 30);
+            lblBarcode.Size = new Size(138, 30);
             lblBarcode.TabIndex = 0;
-            lblBarcode.Text = "BarCode Generation";
+            lblBarcode.Text = "Essencore";
             lblBarcode.Click += lblBarcode_Click;
             // 
             // label1
@@ -257,22 +257,12 @@
             label10.AllowDrop = true;
             label10.AutoSize = true;
             label10.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(70, 22);
+            label10.Location = new Point(26, 22);
             label10.Name = "label10";
             label10.Size = new Size(100, 15);
             label10.TabIndex = 25;
             label10.Text = "08 August 2024";
             label10.Click += label10_Click;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Showcard Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(20, 20);
-            label11.Name = "label11";
-            label11.Size = new Size(49, 17);
-            label11.TabIndex = 26;
-            label11.Text = "Date :";
             // 
             // lblWeekNumber
             // 
@@ -285,13 +275,23 @@
             lblWeekNumber.Text = "12:53:18";
             lblWeekNumber.Click += lblWeekNumber_Click;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Showcard Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(435, 36);
+            label11.Name = "label11";
+            label11.Size = new Size(261, 30);
+            label11.TabIndex = 28;
+            label11.Text = "QR Code Generation";
+            // 
             // frmBarcode
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1147, 645);
-            Controls.Add(lblWeekNumber);
             Controls.Add(label11);
+            Controls.Add(lblWeekNumber);
             Controls.Add(label10);
             Controls.Add(pictureBox1);
             Controls.Add(lblProductNo);
@@ -348,7 +348,7 @@
         private Label lblProductNo;
         private PictureBox pictureBox1;
         private Label label10;
-        private Label label11;
         private Label lblWeekNumber;
+        private Label label11;
     }
 }
